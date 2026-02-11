@@ -44,9 +44,9 @@ function slaIndicatorStatus(step: ProcessStep): "green" | "amber" | "red" {
 }
 
 const SLA_COLORS = {
-  green: "bg-emerald-500/90",
-  amber: "bg-amber-500/90",
-  red: "bg-red-500/90",
+  green: "bg-[#28a745]",
+  amber: "bg-[#ffc107]",
+  red: "bg-[#dc3545]",
 };
 
 export default function ProcessesPage() {
@@ -180,9 +180,9 @@ export default function ProcessesPage() {
                       <span
                         className={cn(
                           "inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-xs font-medium",
-                          status === "green" && "bg-emerald-500/10 text-emerald-600",
-                          status === "amber" && "bg-amber-500/10 text-amber-600",
-                          status === "red" && "bg-red-500/10 text-red-600"
+                          status === "green" && "bg-[#28a745]/10 text-[#28a745]",
+                          status === "amber" && "bg-[#ffc107]/15 text-[#e6a800]",
+                          status === "red" && "bg-[#dc3545]/10 text-[#dc3545]"
                         )}
                       >
                         <span

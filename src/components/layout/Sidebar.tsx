@@ -62,12 +62,12 @@ export function Sidebar() {
   return (
     <aside
       className={cn(
-        "fixed left-0 top-0 z-40 hidden h-screen flex-col border-r border-border/50 bg-background/95 backdrop-blur-sm transition-[width] duration-200 md:flex",
+        "fixed left-0 top-0 z-40 hidden h-screen flex-col border-r border-border bg-sidebar transition-[width] duration-200 md:flex",
         expanded ? "w-56" : "w-16"
       )}
     >
       {/* Logo + collapse area — h-14 */}
-      <div className="flex h-14 shrink-0 items-center justify-between border-b border-border/50 px-3">
+      <div className="flex h-14 shrink-0 items-center justify-between border-b border-border px-3">
         <Link
           href="/dashboard"
           className="flex min-w-0 items-center gap-2 overflow-hidden"
@@ -127,10 +127,10 @@ export function Sidebar() {
                     <Link
                       href={item.href}
                       className={cn(
-                        "flex h-8 items-center gap-2 rounded-md px-2 text-[13px] transition-colors hover:bg-muted/30",
-                        isActive
-                          ? "bg-foreground/5 font-medium text-foreground"
-                          : "text-muted-foreground hover:text-foreground"
+                        "flex h-8 items-center gap-2 rounded-md px-2 text-[13px] transition-colors border-l-4 border-transparent hover:bg-muted/50",
+                        isActive && "border-l-4 border-primary font-medium",
+                        isActive && "bg-sidebar-active text-primary dark:text-foreground",
+                        !isActive && "text-muted-foreground hover:text-foreground"
                       )}
                     >
                       <item.icon className="h-4 w-4 shrink-0" />
@@ -144,14 +144,13 @@ export function Sidebar() {
         ))}
 
         {/* Settings at bottom */}
-        <div className="mt-auto border-t border-border/50 px-2 pt-2">
+        <div className="mt-auto border-t border-border px-2 pt-2">
           <Link
             href="/settings"
             className={cn(
-              "flex h-8 items-center gap-2 rounded-md px-2 text-[13px] transition-colors hover:bg-muted/30",
-              pathname === "/settings"
-                ? "bg-foreground/5 font-medium text-foreground"
-                : "text-muted-foreground hover:text-foreground"
+              "flex h-8 items-center gap-2 rounded-md px-2 text-[13px] transition-colors border-l-4 border-transparent hover:bg-muted/50",
+              pathname === "/settings" && "border-l-4 border-primary font-medium bg-sidebar-active text-primary dark:text-foreground",
+              pathname !== "/settings" && "text-muted-foreground hover:text-foreground"
             )}
           >
             <Settings className="h-4 w-4 shrink-0" />

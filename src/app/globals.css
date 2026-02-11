@@ -1,50 +1,75 @@
 @import "tailwindcss";
 
+/* KYA-style: light mode */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  --muted: 0 0% 96%;
-  --muted-foreground: #71717a;
-  --border: 0 0% 90%;
-  --primary: 263 70% 50%;
-  --primary-foreground: 0 0% 100%;
-  --primary-rgb: 99, 102, 241;
-  --card: 0 0% 100%;
-  --card-foreground: #171717;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 100%;
-  --accent: 0 0% 96%;
-  --accent-foreground: 240 6% 10%;
+  --foreground: #333333;
+  --muted: #f8f9fa;
+  --muted-foreground: #666666;
+  --border: #e0e0e0;
+  --card: #ffffff;
+  --card-foreground: #333333;
+  --primary: #007bff;
+  --primary-foreground: #ffffff;
+  --primary-rgb: 0, 123, 255;
+  --destructive: #dc3545;
+  --destructive-foreground: #ffffff;
+  --accent: #f8f9fa;
+  --accent-foreground: #333333;
+  --sidebar-bg: #f8f9fa;
+  --sidebar-active: #e6f0ff;
+  --success: #28a745;
+  --warning: #ffc107;
+  --purple: #6f42c1;
+  --teal: #20c997;
+  --placeholder: #999999;
 }
 
+/* KYA-style: dark mode */
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --muted: 224 71% 8%;
-  --muted-foreground: #a1a1aa;
-  --border: 224 71% 12%;
-  --card: 224 71% 4%;
-  --card-foreground: #ededed;
-  --destructive: 0 63% 51%;
-  --destructive-foreground: 0 0% 100%;
-  --accent: 224 71% 8%;
-  --accent-foreground: #ededed;
+  --background: #242424;
+  --foreground: #ffffff;
+  --muted: #2c2c2c;
+  --muted-foreground: #cccccc;
+  --border: #444444;
+  --card: #242424;
+  --card-foreground: #ffffff;
+  --primary: #00bfff;
+  --primary-foreground: #ffffff;
+  --primary-rgb: 0, 191, 255;
+  --destructive: #dc3545;
+  --destructive-foreground: #ffffff;
+  --accent: #2c2c2c;
+  --accent-foreground: #ffffff;
+  --sidebar-bg: #1a1a1a;
+  --sidebar-active: #2c2c2c;
+  --success: #28a745;
+  --warning: #ffc107;
+  --purple: #9370db;
+  --teal: #00bfff;
+  --placeholder: #888888;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-muted: hsl(var(--muted));
+  --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  --color-border: hsl(var(--border));
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-card: hsl(var(--card));
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-  --color-accent: hsl(var(--accent));
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-sidebar: var(--sidebar-bg);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-purple: var(--purple);
+  --color-teal: var(--teal);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -55,30 +80,44 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
-/* Design system utilities (CR broker) */
+/* KYA: flat cards, minimal glass */
 .glass-card {
-  background: hsl(var(--card) / 0.8);
-  backdrop-filter: blur(8px);
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.dark .glass-card {
+  box-shadow: none;
+}
+
+:root:not(.dark) .glass-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .shadow-modern {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.dark .shadow-modern {
+  box-shadow: none;
 }
 
 .shadow-modern-lg {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dark .shadow-modern-lg {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .shadow-colored {
-  box-shadow: 0 4px 14px rgba(var(--primary-rgb), 0.25);
+  box-shadow: 0 4px 14px rgba(var(--primary-rgb), 0.2);
 }
 
+/* KYA: solid primary (no gradient) */
 .gradient-primary {
-  background: linear-gradient(
-    135deg,
-    hsl(var(--primary)),
-    hsl(var(--primary) / 0.8)
-  );
+  background: var(--primary);
+  color: var(--primary-foreground);
 }
 
 .animate-fade-in {

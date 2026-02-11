@@ -81,7 +81,7 @@ const riskGradeData = Object.entries(riskGradeCounts).map(([name, value]) => ({
   value,
 }));
 
-const CHART_COLORS = ["#8b5cf6", "#a78bfa", "#6366f1", "#818cf8", "#22d3ee"];
+const CHART_COLORS = ["#007bff", "#28a745", "#6f42c1", "#ffc107", "#dc3545"];
 
 const recentSubmissions = [...submissions]
   .sort((a, b) => {
@@ -126,8 +126,8 @@ export default function DashboardPage() {
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-2 text-sm">
-            <TrendingUp className="h-4 w-4 text-green-500" />
-            <span className="text-green-500 font-medium">
+            <TrendingUp className="h-4 w-4 text-[#28a745]" />
+            <span className="text-[#28a745] font-medium">
               {gwpTrendPct >= 0 ? "+" : ""}
               {gwpTrendPct.toFixed(1)}%
             </span>
@@ -381,7 +381,7 @@ export default function DashboardPage() {
                   key={a.id}
                   className={cn(
                     "rounded-lg border p-3 text-sm transition-colors",
-                    a.severity === "high" && "border-amber-500/30 bg-amber-500/5",
+                    a.severity === "high" && "border-[#ffc107]/30 bg-[#ffc107]/10",
                     a.severity === "medium" && "border-border/50 bg-muted/20",
                     a.severity === "low" && "border-border/30"
                   )}

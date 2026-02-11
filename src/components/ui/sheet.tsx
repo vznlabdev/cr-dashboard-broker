@@ -27,16 +27,16 @@ const SheetOverlay = React.forwardRef<
 SheetOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 const sheetVariants = cva(
-  "fixed z-50 flex flex-col glass-card shadow-modern-lg transition-all duration-300 animate-fade-in",
+  "fixed z-50 flex flex-col glass-card shadow-modern-lg transition-all duration-300 animate-fade-in border-border",
   {
     variants: {
       side: {
-        top: "inset-x-0 top-0 border-b border-border/50 rounded-b-xl",
+        top: "inset-x-0 top-0 border-b rounded-b-lg",
         bottom:
-          "inset-x-0 bottom-0 border-t border-border/50 rounded-t-xl",
-        left: "inset-y-0 left-0 h-full w-3/4 border-r border-border/50 rounded-r-xl sm:max-w-sm",
+          "inset-x-0 bottom-0 border-t rounded-t-lg",
+        left: "inset-y-0 left-0 h-full w-3/4 border-r rounded-r-lg sm:max-w-sm",
         right:
-          "inset-y-0 right-0 h-full w-3/4 border-l border-border/50 rounded-l-xl sm:max-w-sm",
+          "inset-y-0 right-0 h-full w-3/4 border-l rounded-l-lg sm:max-w-sm",
       },
     },
     defaultVariants: {

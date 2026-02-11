@@ -46,10 +46,10 @@ const COVERAGE_OPTIONS: { value: string; label: string }[] = [
 ];
 
 const wordingStatusClasses: Record<WordingStatus, string> = {
-  draft: "text-slate-500 bg-slate-500/10",
-  under_review: "text-amber-600 bg-amber-500/10",
-  approved: "text-emerald-600 bg-emerald-500/10",
-  superseded: "text-slate-500 bg-slate-500/10",
+  draft: "text-zinc-500 bg-zinc-500/10",
+  under_review: "text-[#ffc107] bg-[#ffc107]/15",
+  approved: "text-[#28a745] bg-[#28a745]/10",
+  superseded: "text-zinc-500 bg-zinc-500/10",
 };
 
 // Mock version history and detail content per wording

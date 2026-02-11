@@ -177,7 +177,7 @@ export default function ResultsPage() {
                 <span
                   className={cn(
                     "flex items-center gap-1 text-sm font-medium",
-                    renewalTrend > 0 ? "text-emerald-600" : "text-red-600"
+                    renewalTrend > 0 ? "text-[#28a745]" : "text-[#dc3545]"
                   )}
                 >
                   {renewalTrend > 0 ? (
@@ -260,7 +260,7 @@ export default function ResultsPage() {
                 variant="outline"
                 className={cn(
                   "font-normal",
-                  gwpYoY >= 0 ? "bg-emerald-500/10 text-emerald-600" : "bg-red-500/10 text-red-600"
+                  gwpYoY >= 0 ? "bg-[#28a745]/10 text-[#28a745]" : "bg-[#dc3545]/10 text-[#dc3545]"
                 )}
               >
                 {gwpYoY >= 0 ? "+" : ""}

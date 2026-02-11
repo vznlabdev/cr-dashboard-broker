@@ -26,12 +26,12 @@ function MainLayoutInner({
       <MobileNav />
       <div
         className={cn(
-          "flex min-h-screen flex-1 flex-col transition-[margin-left] duration-200",
+          "flex min-h-screen flex-1 flex-col bg-background transition-[margin-left] duration-200",
           expanded ? "md:ml-56" : "md:ml-16"
         )}
       >
         <Header title={title} breadcrumb={breadcrumb} />
-        <main className="flex min-h-0 flex-1 flex-col">
+        <main className="flex min-h-0 flex-1 flex-col bg-background">
           <PageContainer>{children}</PageContainer>
         </main>
       </div>

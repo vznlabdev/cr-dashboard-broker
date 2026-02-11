@@ -34,7 +34,7 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 glass-card rounded-xl border border-border/50 p-6 shadow-modern-lg duration-200 animate-fade-in",
+        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 glass-card rounded-lg border border-border p-6 shadow-modern-lg duration-200 animate-fade-in",
         className
       )}
       {...props}
@@ -106,7 +106,7 @@ const DialogContentWithClose = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 glass-card rounded-xl border border-border/50 p-6 shadow-modern-lg duration-200 animate-fade-in",
+        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 glass-card rounded-lg border border-border p-6 shadow-modern-lg duration-200 animate-fade-in",
         className
       )}
       {...props}

@@ -37,16 +37,16 @@ import {
 import type { AppetiteLevel } from "@/types";
 
 const APPETITE_STYLES: Record<AppetiteLevel, string> = {
-  hot: "bg-emerald-600/90 text-white border-0",
-  warm: "bg-amber-500/90 text-white border-0",
-  cold: "bg-slate-500/80 text-white border-0",
-  declined: "bg-red-600/90 text-white border-0",
+  hot: "bg-[#28a745] text-white border-0",
+  warm: "bg-[#ffc107] text-black border-0",
+  cold: "bg-zinc-500 text-white border-0",
+  declined: "bg-[#dc3545] text-white border-0",
 };
 
 const COMPLIANCE_STYLES: Record<string, string> = {
-  Compliant: "bg-emerald-500/10 text-emerald-600 border-emerald-500/30",
-  "In review": "bg-amber-500/10 text-amber-600 border-amber-500/30",
-  Pending: "bg-slate-500/10 text-slate-600 border-slate-500/30",
+  Compliant: "bg-[#28a745]/10 text-[#28a745] border-[#28a745]/30",
+  "In review": "bg-[#ffc107]/15 text-[#e6a800] border-[#ffc107]/30",
+  Pending: "bg-zinc-500/10 text-zinc-600 border-zinc-500/30",
   "Not applicable": "bg-muted/50 text-muted-foreground border-border",
 };
 

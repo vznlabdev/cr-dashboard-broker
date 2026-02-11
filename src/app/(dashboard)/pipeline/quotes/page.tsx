@@ -153,7 +153,7 @@ export default function PipelineQuotesPage() {
                         key={quoteId}
                         className={cn(
                           "px-3 py-1 font-mono text-[11px]",
-                          isBest && "bg-green-500/10 text-green-600 dark:text-green-400 font-semibold"
+                          isBest && "bg-[#28a745]/10 text-[#28a745] font-semibold"
                         )}
                       >
                         {typeof value === "number"

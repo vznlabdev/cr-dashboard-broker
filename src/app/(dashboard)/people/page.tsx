@@ -45,15 +45,15 @@ const COVERAGE_LABELS: Record<CoverageType, string> = {
 };
 
 const RELATIONSHIP_STYLES: Record<string, string> = {
-  strong: "bg-emerald-500/10 text-emerald-600 border-emerald-500/30",
-  moderate: "bg-amber-500/10 text-amber-600 border-amber-500/30",
-  new: "bg-slate-500/10 text-slate-600 border-slate-500/30",
+  strong: "bg-[#28a745]/10 text-[#28a745] border-[#28a745]/30",
+  moderate: "bg-[#ffc107]/15 text-[#e6a800] border-[#ffc107]/30",
+  new: "bg-zinc-500/10 text-zinc-600 border-zinc-500/30",
 };
 
 const DA_STATUS_STYLES: Record<string, string> = {
-  active: "bg-emerald-500/10 text-emerald-600 border-emerald-500/30",
-  expiring_soon: "bg-amber-500/10 text-amber-600 border-amber-500/30",
-  expired: "bg-red-500/10 text-red-600 border-red-500/30",
+  active: "bg-[#28a745]/10 text-[#28a745] border-[#28a745]/30",
+  expiring_soon: "bg-[#ffc107]/15 text-[#e6a800] border-[#ffc107]/30",
+  expired: "bg-[#dc3545]/10 text-[#dc3545] border-[#dc3545]/30",
 };
 
 function getInitials(name: string): string {
@@ -323,10 +323,10 @@ export default function PeoplePage() {
                           variant="outline"
                           className={cn(
                             "text-[10px] capitalize",
-                            level === "hot" && "bg-emerald-500/10 text-emerald-600",
-                            level === "warm" && "bg-amber-500/10 text-amber-600",
-                            level === "cold" && "bg-slate-500/10 text-slate-600",
-                            level === "declined" && "bg-red-500/10 text-red-600"
+                            level === "hot" && "bg-[#28a745]/10 text-[#28a745]",
+                            level === "warm" && "bg-[#ffc107]/15 text-[#e6a800]",
+                            level === "cold" && "bg-zinc-500/10 text-zinc-600",
+                            level === "declined" && "bg-[#dc3545]/10 text-[#dc3545]"
                           )}
                         >
                           {level}

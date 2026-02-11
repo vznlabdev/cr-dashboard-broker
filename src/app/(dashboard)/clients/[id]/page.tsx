@@ -272,9 +272,9 @@ export default function ClientDetailPage() {
                         <span
                           className={cn(
                             "inline-flex items-center rounded-full px-1.5 py-0.5 text-[10px] font-medium",
-                            p.status === "active" && "text-emerald-600 bg-emerald-500/10",
-                            p.status === "expired" && "text-slate-500 bg-slate-500/10",
-                            p.status === "pending_renewal" && "text-amber-600 bg-amber-500/10"
+                            p.status === "active" && "text-[#28a745] bg-[#28a745]/10",
+                            p.status === "expired" && "text-zinc-500 bg-zinc-500/10",
+                            p.status === "pending_renewal" && "text-[#ffc107] bg-[#ffc107]/15"
                           )}
                         >
                           {p.status.replace(/_/g, " ")}
@@ -329,8 +329,8 @@ export default function ClientDetailPage() {
                         <span
                           className={cn(
                             "inline-flex items-center rounded-full px-1.5 py-0.5 text-[10px] font-medium",
-                            c.status === "open" && "text-amber-600 bg-amber-500/10",
-                            c.status === "closed" && "text-emerald-600 bg-emerald-500/10",
+                            c.status === "open" && "text-[#ffc107] bg-[#ffc107]/15",
+                            c.status === "closed" && "text-[#28a745] bg-[#28a745]/10",
                             c.status === "reserved" && "text-blue-600 bg-blue-500/10"
                           )}
                         >

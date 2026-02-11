@@ -15,30 +15,32 @@ export interface ChartTheme {
   tooltipText: string;
 }
 
+/** KYA dark: teal, green, purple, orange, red */
 const darkMode: ChartTheme = {
-  chart1: "oklch(0.65 0.18 270)",
-  chart2: "oklch(0.70 0.20 280)",
-  chart3: "oklch(0.68 0.17 240)",
-  chart4: "oklch(0.72 0.16 300)",
-  chart5: "oklch(0.75 0.14 200)",
-  textColor: "#d1d5db",
-  gridColor: "#374151",
-  tooltipBg: "rgba(30, 30, 45, 0.95)",
+  chart1: "#00bfff",
+  chart2: "#28a745",
+  chart3: "#9370db",
+  chart4: "#ffc107",
+  chart5: "#dc3545",
+  textColor: "#ffffff",
+  gridColor: "#444444",
+  tooltipBg: "rgba(36, 36, 36, 0.98)",
   tooltipBorder: "rgba(255, 255, 255, 0.1)",
-  tooltipText: "#f9fafb",
+  tooltipText: "#ffffff",
 };
 
+/** KYA light: blue, green, purple, orange, red */
 const lightMode: ChartTheme = {
-  chart1: "oklch(0.55 0.15 260)",
-  chart2: "oklch(0.60 0.18 280)",
-  chart3: "oklch(0.65 0.16 240)",
-  chart4: "oklch(0.62 0.14 300)",
-  chart5: "oklch(0.68 0.12 200)",
-  textColor: "#6b7280",
-  gridColor: "#e5e7eb",
-  tooltipBg: "rgba(255, 255, 255, 0.95)",
+  chart1: "#007bff",
+  chart2: "#28a745",
+  chart3: "#6f42c1",
+  chart4: "#ffc107",
+  chart5: "#dc3545",
+  textColor: "#333333",
+  gridColor: "#e0e0e0",
+  tooltipBg: "rgba(255, 255, 255, 0.98)",
   tooltipBorder: "rgba(0, 0, 0, 0.1)",
-  tooltipText: "#111827",
+  tooltipText: "#333333",
 };
 
 export function useChartTheme(): ChartTheme {

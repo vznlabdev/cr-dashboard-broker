@@ -1,19 +1,37 @@
 "use client";
 
 import * as React from "react";
-import { useChartTheme } from "@/lib/use-chart-theme";
+import { useChartTheme, type ChartTheme } from "@/lib/use-chart-theme";
 
 type ThemedChartWrapperProps = {
-  children: (theme: ReturnType<typeof useChartTheme>) => React.ReactNode;
+  children: (theme: ChartTheme) => React.ReactNode;
   className?: string;
 };
 
+/** Default theme used for SSR and initial client render to avoid hydration mismatch */
+const SSR_THEME: ChartTheme = {
+  chart1: "#00bfff",
+  chart2: "#28a745",
+  chart3: "#9370db",
+  chart4: "#ffc107",
+  chart5: "#dc3545",
+  textColor: "#ffffff",
+  gridColor: "#444444",
+  tooltipBg: "rgba(36, 36, 36, 0.98)",
+  tooltipBorder: "rgba(255, 255, 255, 0.1)",
+  tooltipText: "#ffffff",
+};
+
 /**
- * Wraps Recharts (or any chart) and injects the current chart theme (oklch colors, tooltip styles).
- * Use the theme in Tooltip content and for stroke/fill colors.
+ * Wraps Recharts (or any chart) and injects the current chart theme.
+ * Uses a fixed theme for SSR and first paint so server and client match; then switches to resolved theme after mount.
  */
 export function ThemedChartWrapper({ children, className }: ThemedChartWrapperProps) {
-  const theme = useChartTheme();
+  const resolvedTheme = useChartTheme();
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+
+  const theme = mounted ? resolvedTheme : SSR_THEME;
 
   return (
     <div

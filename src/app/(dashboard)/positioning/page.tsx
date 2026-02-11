@@ -43,10 +43,10 @@ const COVERAGE_LABELS: Record<CoverageType, string> = {
 };
 
 const APPETITE_STYLES: Record<AppetiteLevel, string> = {
-  hot: "bg-emerald-600/90 text-white",
-  warm: "bg-amber-500/90 text-white",
-  cold: "bg-slate-500/80 text-white",
-  declined: "bg-red-600/90 text-white",
+  hot: "bg-[#28a745] text-white",
+  warm: "bg-[#ffc107] text-black",
+  cold: "bg-zinc-500 text-white",
+  declined: "bg-[#dc3545] text-white",
 };
 
 /** Unique syndicates (first contact per syndicate), with appetite by coverage */
@@ -322,7 +322,7 @@ export default function PositioningPage() {
                         className={cn(
                           "h-4 w-4",
                           i <= row.responsivenessScore
-                            ? "fill-amber-500 text-amber-500"
+                            ? "fill-[#ffc107] text-[#ffc107]"
                             : "text-muted/50"
                         )}
                       />

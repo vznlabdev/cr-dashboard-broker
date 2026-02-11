@@ -69,7 +69,7 @@ export function MobileNav() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed left-4 top-4 z-50 flex md:hidden h-10 w-10 items-center justify-center rounded-md border border-border/50 bg-background/95 text-foreground"
+        className="fixed left-4 top-4 z-50 flex md:hidden h-10 w-10 items-center justify-center rounded-lg border border-border bg-sidebar text-foreground"
         aria-label="Open menu"
       >
         <Menu className="h-5 w-5" />
@@ -78,11 +78,11 @@ export function MobileNav() {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50 transition-opacity" />
           <Dialog.Content
-            className="fixed inset-y-0 left-0 z-50 w-[280px] border-r border-border/50 bg-background/95 backdrop-blur-sm shadow-modern-lg flex flex-col animate-fade-in"
+            className="fixed inset-y-0 left-0 z-50 w-[280px] border-r border-border bg-sidebar shadow-modern-lg flex flex-col animate-fade-in"
             onPointerDownOutside={() => setOpen(false)}
             onEscapeKeyDown={() => setOpen(false)}
           >
-            <div className="flex h-14 items-center justify-between border-b border-border/50 px-4">
+            <div className="flex h-14 items-center justify-between border-b border-border px-4">
               <Link href="/dashboard" onClick={() => setOpen(false)} className="flex items-center gap-2">
                 <span className="relative h-8 w-8 shrink-0">
                   <Image
@@ -131,10 +131,9 @@ export function MobileNav() {
                             href={item.href}
                             onClick={() => setOpen(false)}
                             className={cn(
-                              "flex h-9 items-center gap-2 rounded-md px-2 text-[13px] transition-colors",
-                              isActive
-                                ? "bg-foreground/5 font-medium text-foreground"
-                                : "text-muted-foreground hover:bg-muted/30 hover:text-foreground"
+                              "flex h-9 items-center gap-2 rounded-md px-2 text-[13px] transition-colors border-l-4 border-transparent",
+                              isActive && "border-l-4 border-primary font-medium bg-sidebar-active text-primary dark:text-foreground",
+                              !isActive && "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
                             )}
                           >
                             <item.icon className="h-4 w-4 shrink-0" />

@@ -1,27 +1,29 @@
 import type { SubmissionStatus } from "@/types";
 
+/** KYA-style: green=success/bound, purple=AI/quoted, blue=info, orange=pending, red=declined */
 export const statusColors: Record<
   SubmissionStatus | "pending" | "accepted" | "expired",
   string
 > = {
-  draft: "text-slate-500 bg-slate-500/10",
-  submitted: "text-blue-600 bg-blue-500/10",
-  quoted: "text-amber-600 bg-amber-500/10",
-  bound: "text-emerald-600 bg-emerald-500/10",
-  declined: "text-red-600 bg-red-500/10",
-  expired: "text-slate-500 bg-slate-500/10",
-  pending: "text-amber-600 bg-amber-500/10",
-  accepted: "text-emerald-600 bg-emerald-500/10",
+  draft: "text-zinc-500 bg-zinc-500/10",
+  submitted: "text-[#007bff] bg-[#007bff]/10",
+  quoted: "text-[#6f42c1] bg-[#6f42c1]/10",
+  bound: "text-[#28a745] bg-[#28a745]/10",
+  declined: "text-[#dc3545] bg-[#dc3545]/10",
+  expired: "text-zinc-500 bg-zinc-500/10",
+  pending: "text-[#ffc107] bg-[#ffc107]/15",
+  accepted: "text-[#28a745] bg-[#28a745]/10",
 };
 
+/** KYA-style: Low=green, Medium=orange, High/Critical=red; A/B=green/teal, C/D=orange, E/F=red */
 export const riskGradeColors: Record<
   string,
   { text: string; bg: string; border: string }
 > = {
-  A: { text: "text-green-500", bg: "bg-green-500/10", border: "border-green-500/20" },
-  B: { text: "text-blue-500", bg: "bg-blue-500/10", border: "border-blue-500/20" },
-  C: { text: "text-yellow-500", bg: "bg-yellow-500/10", border: "border-yellow-500/20" },
-  D: { text: "text-orange-500", bg: "bg-orange-500/10", border: "border-orange-500/20" },
-  E: { text: "text-red-500", bg: "bg-red-500/10", border: "border-red-500/20" },
-  F: { text: "text-red-700", bg: "bg-red-700/10", border: "border-red-700/20" },
+  A: { text: "text-[#28a745]", bg: "bg-[#28a745]/10", border: "border-[#28a745]/20" },
+  B: { text: "text-[#00bfff]", bg: "bg-[#00bfff]/10", border: "border-[#00bfff]/20" },
+  C: { text: "text-[#ffc107]", bg: "bg-[#ffc107]/15", border: "border-[#ffc107]/30" },
+  D: { text: "text-[#fd7e14]", bg: "bg-[#fd7e14]/10", border: "border-[#fd7e14]/20" },
+  E: { text: "text-[#dc3545]", bg: "bg-[#dc3545]/10", border: "border-[#dc3545]/20" },
+  F: { text: "text-[#dc3545]", bg: "bg-[#dc3545]/10", border: "border-[#dc3545]/20" },
 };
