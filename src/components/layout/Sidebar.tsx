@@ -1,8 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import {
   LayoutDashboard,
   FileText,
@@ -58,6 +60,17 @@ const navSections = [
 export function Sidebar() {
   const pathname = usePathname();
   const { expanded, toggle } = useSidebar();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const isLight = mounted && resolvedTheme === "light";
+  const landscapeSrc = isLight
+    ? "/logo/creation-rights-logo-landscape-black.svg"
+    : "/logo/creation-rights-logo-landscape-white.svg";
+  const iconSrc = isLight
+    ? "/logo/creation-rights-logo-icon-black.svg"
+    : "/logo/creation-rights-logo-icon-white.svg";
 
   return (
     <aside
@@ -66,46 +79,37 @@ export function Sidebar() {
         expanded ? "w-56" : "w-16"
       )}
     >
-      {/* Logo + collapse area — h-14 */}
-      <div className="flex h-14 shrink-0 items-center justify-between border-b border-border px-3">
+      {/* Logo area — h-14 */}
+      <div className="flex h-14 shrink-0 items-center border-b border-border px-3">
         <Link
           href="/dashboard"
-          className="flex min-w-0 items-center gap-2 overflow-hidden"
+          className="flex min-w-0 flex-1 items-center overflow-hidden"
         >
-          <span className="relative h-8 w-8 shrink-0">
-            <Image
-              src="/logo/creation-rights-logo-icon-white.svg"
-              alt="Creation Rights"
-              width={32}
-              height={32}
-              className="h-8 w-8 shrink-0 dark:block hidden"
-            />
-            <Image
-              src="/logo/creation-rights-logo-icon-black.svg"
-              alt="Creation Rights"
-              width={32}
-              height={32}
-              className="h-8 w-8 shrink-0 block dark:hidden"
-            />
-          </span>
-          {expanded && (
-            <span className="truncate text-sm font-semibold text-foreground">
-              Creation Rights
+          {expanded ? (
+            <span className="relative flex h-7 w-full min-w-0 max-w-[200px] items-center">
+              <img
+                src={landscapeSrc}
+                alt="Creation Rights"
+                width={200}
+                height={28}
+                className={cn(
+                  "h-6 w-auto max-w-full object-contain object-left",
+                  !isLight && "drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"
+                )}
+              />
+            </span>
+          ) : (
+            <span className="relative h-8 w-8 shrink-0">
+              <Image
+                src={iconSrc}
+                alt="Creation Rights"
+                width={32}
+                height={32}
+                className="h-8 w-8 shrink-0"
+              />
             </span>
           )}
         </Link>
-        <button
-          type="button"
-          onClick={toggle}
-          className="shrink-0 rounded p-1.5 text-muted-foreground transition-colors hover:bg-muted/30 hover:text-foreground"
-          aria-label={expanded ? "Collapse sidebar" : "Expand sidebar"}
-        >
-          {expanded ? (
-            <PanelLeftClose className="h-4 w-4" />
-          ) : (
-            <PanelLeft className="h-4 w-4" />
-          )}
-        </button>
       </div>
 
       {/* Nav */}
@@ -143,8 +147,8 @@ export function Sidebar() {
           </div>
         ))}
 
-        {/* Settings at bottom */}
-        <div className="mt-auto border-t border-border px-2 pt-2">
+        {/* Settings + collapse at bottom */}
+        <div className="mt-auto border-t border-border px-2 pt-2 pb-2 space-y-0.5">
           <Link
             href="/settings"
             className={cn(
@@ -156,6 +160,19 @@ export function Sidebar() {
             <Settings className="h-4 w-4 shrink-0" />
             {expanded && <span className="truncate">Settings</span>}
           </Link>
+          <button
+            type="button"
+            onClick={toggle}
+            className="flex h-8 w-full items-center gap-2 rounded-md px-2 text-[13px] text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground"
+            aria-label={expanded ? "Collapse sidebar" : "Expand sidebar"}
+          >
+            {expanded ? (
+              <PanelLeftClose className="h-4 w-4 shrink-0" />
+            ) : (
+              <PanelLeft className="h-4 w-4 shrink-0" />
+            )}
+            {expanded && <span className="truncate">Collapse</span>}
+          </button>
         </div>
       </nav>
     </aside>

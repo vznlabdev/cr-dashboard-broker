@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 import * as Dialog from "@radix-ui/react-dialog";
 import {
   LayoutDashboard,
@@ -63,6 +63,14 @@ const navSections = [
 export function MobileNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const isLight = mounted && resolvedTheme === "light";
+  const landscapeSrc = isLight
+    ? "/logo/creation-rights-logo-landscape-black.svg"
+    : "/logo/creation-rights-logo-landscape-white.svg";
 
   return (
     <>
@@ -83,24 +91,19 @@ export function MobileNav() {
             onEscapeKeyDown={() => setOpen(false)}
           >
             <div className="flex h-14 items-center justify-between border-b border-border px-4">
-              <Link href="/dashboard" onClick={() => setOpen(false)} className="flex items-center gap-2">
-                <span className="relative h-8 w-8 shrink-0">
-                  <Image
-                    src="/logo/creation-rights-logo-icon-white.svg"
+              <Link href="/dashboard" onClick={() => setOpen(false)} className="flex min-w-0 flex-1 items-center">
+                <span className="relative flex h-7 w-full max-w-[180px] items-center">
+                  <img
+                    src={landscapeSrc}
                     alt="Creation Rights"
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 shrink-0 dark:block hidden"
-                  />
-                  <Image
-                    src="/logo/creation-rights-logo-icon-black.svg"
-                    alt="Creation Rights"
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 shrink-0 block dark:hidden"
+                    width={180}
+                    height={28}
+                    className={cn(
+                      "h-6 w-auto max-w-full object-contain object-left",
+                      !isLight && "drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"
+                    )}
                   />
                 </span>
-                <span className="text-sm font-semibold text-foreground">Creation Rights</span>
               </Link>
               <Dialog.Close asChild>
                 <button
