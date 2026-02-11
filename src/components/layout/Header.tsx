@@ -48,11 +48,11 @@ export function Header({ title, breadcrumb }: HeaderProps) {
               </span>
             ))}
           </nav>
-        ) : (
+        ) : title ? (
           <h1 className="truncate text-base font-semibold text-foreground">
-            {title ?? "Dashboard"}
+            {title}
           </h1>
-        )}
+        ) : null}
       </div>
 
       <div className="flex shrink-0 items-center gap-1">

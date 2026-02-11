@@ -114,10 +114,10 @@ export function Sidebar() {
 
       {/* Nav */}
       <nav className="flex-1 overflow-y-auto py-2">
-        {navSections.map((section) => (
-          <div key={section.label ?? "main"} className="px-2">
+        {navSections.map((section, index) => (
+          <div key={section.label ?? "main"} className={cn("px-2", index > 0 && "mt-4")}>
             {section.label && expanded && (
-              <div className="mb-1 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+              <div className="mb-2 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
                 {section.label}
               </div>
             )}
