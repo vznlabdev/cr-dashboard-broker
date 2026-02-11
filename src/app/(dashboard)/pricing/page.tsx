@@ -300,9 +300,9 @@ export default function PricingPage() {
                           borderRadius: "8px",
                           color: theme.tooltipText,
                         }}
-                        formatter={(value: number | undefined, name: string) => [
+                        formatter={(value: number | undefined, name?: string) => [
                           value != null ? `${value.toFixed(1)}%` : "",
-                          name === "lossRatioPct" ? "Loss ratio" : "Target",
+                          (name ?? "") === "lossRatioPct" ? "Loss ratio" : "Target",
                         ]}
                         labelFormatter={(y) => `Year ${y}`}
                       />
@@ -471,10 +471,13 @@ export default function PricingPage() {
                           borderRadius: "8px",
                           color: theme.tooltipText,
                         }}
-                        formatter={(value: number | undefined, _n, p: { payload: typeof scatterData[0] }) => [
-                          value != null ? (p.payload.premium === value ? `£${(value / 1000).toFixed(0)}k` : value) : "",
-                          p.payload.premium === value ? "Premium" : "Accounts",
-                        ]}
+                        formatter={(value: number | undefined, _n, item?: { payload?: { premium?: number } }) => {
+                          const payload = item?.payload;
+                          return [
+                            value != null ? (payload?.premium === value ? `£${(value / 1000).toFixed(0)}k` : String(value)) : "",
+                            payload?.premium === value ? "Premium" : "Accounts",
+                          ];
+                        }}
                         labelFormatter={() => ""}
                       />
                       <Scatter

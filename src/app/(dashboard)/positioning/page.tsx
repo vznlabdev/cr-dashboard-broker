@@ -268,12 +268,13 @@ export default function PositioningPage() {
                         borderRadius: "8px",
                         color: theme.tooltipText,
                       }}
-                      formatter={(value: number | undefined, name: string, props: { payload: { placed: number; remaining: number; pctFilled: number } }) => {
-                        if (name === "placed")
-                          return [`£${((props.payload.placed ?? 0) / 1_000_000).toFixed(1)}M placed`, "Placed"];
-                        if (name === "remaining")
-                          return [`£${((props.payload.remaining ?? 0) / 1_000_000).toFixed(1)}M remaining`, "Remaining"];
-                        return [value, name];
+                      formatter={(value: number | undefined, name?: string, item?: { payload?: { placed?: number; remaining?: number; pctFilled?: number } }) => {
+                        const payload = item?.payload;
+                        if (name === "placed" && payload?.placed != null)
+                          return [`£${(payload.placed / 1_000_000).toFixed(1)}M placed`, "Placed"];
+                        if (name === "remaining" && payload?.remaining != null)
+                          return [`£${((payload.remaining) / 1_000_000).toFixed(1)}M remaining`, "Remaining"];
+                        return [value != null ? `£${(value / 1_000_000).toFixed(1)}M` : "", name ?? ""];
                       }}
                       labelFormatter={(_, payloads) =>
                         payloads?.[0]?.payload?.pctFilled != null
